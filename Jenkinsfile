@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        TARGET_HOST = '65.0.86.190'
+        TARGET_HOST = '54.92.166.168'
         DEPLOY_USER = 'ubuntu'
         REMOTE_HTML_PATH = '/var/www/html'
     }
