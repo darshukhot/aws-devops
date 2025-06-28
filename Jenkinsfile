@@ -14,17 +14,18 @@ pipeline {
             }
         }
 
-      stage('Build') {
-    steps {
-        echo 'Simulating build step...'
-        sh '''
-            mkdir -p build
-            find . -maxdepth 1 ! -name build ! -name '.' -exec cp -r {} build/ \;
-            echo "<!-- Build timestamp: $(date) -->" >> build/index.html
-        '''
-    }
-}
-
+        stage('Build') {
+            steps {
+                echo 'Simulating build step...'
+                sh '''
+                    mkdir -p build
+                    for item in *; do
+                        [ "$item" != "build" ] && cp -r "$item" build/
+                    done
+                    echo "<!-- Build timestamp: $(date) -->" >> build/index.html
+                '''
+            }
+        }
 
         stage('Test') {
             steps {
