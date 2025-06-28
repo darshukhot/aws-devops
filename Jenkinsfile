@@ -57,7 +57,7 @@ pipeline {
                         ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${TARGET_HOST} 'sudo mkdir -p ${REMOTE_HTML_PATH} /tmp/html'
                         scp -o StrictHostKeyChecking=no html_package.tar.gz ${DEPLOY_USER}@${TARGET_HOST}:/tmp/html/
                         ssh -o StrictHostKeyChecking=no ${DEPLOY_USER}@${TARGET_HOST} '
-                          sudo tar -xzf /tmp/html/html_package.tar.gz -C /tmp/html &&
+                          sudo tar -xzf /test/html_package.tar.gz -C /tmp/html &&
                             sudo cp -r /tmp/html/* ${REMOTE_HTML_PATH}/ &&
                             sudo systemctl restart apache2
                         '
